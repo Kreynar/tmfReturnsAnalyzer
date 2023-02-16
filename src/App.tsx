@@ -5,6 +5,15 @@ import { convertRate, RateInterval, xirr, XirrInput } from "node-irr";
 
 // ---> TODO add small node app for generating obfuscated stock recs without any info besides returns n openDate n closeDate
 
+interface Snp500RealPricePerMonthContainer {
+  end_date: string; // e.g. "2023-02-01"
+  data: Snp500RealPricePerMonth[];
+}
+
+type Snp500RealPricePerMonth = [string, number]; // e.g. ["2023-02-01",4119.21]
+
+type Snp500MonthToRealPriceMap = Record<string, number>; // e.g. [{"2023-02-01": 4119.21}]
+
 interface StockRecommendationsWithMetadata {
   portfolios: Array<
     "@StockAdvisorTomInclusion" | "@StockAdvisorDavidInclusion"
